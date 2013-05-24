@@ -1,3 +1,3 @@
 # leafSupply
 
-A awesome power supply project.
+An awesome power supply project.
