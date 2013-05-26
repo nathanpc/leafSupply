@@ -21,7 +21,6 @@ Because we are awesome, we'll need a microcontroller with the following specific
   - 1x Interrupt pin for the multiplexer check routine
   - 4x Input pins for the muiltiplexer
   - 6x Output pins for the LCD
-  - *REMOVE IF THERE IS PWM LM317 ADJUST* 4x I/O pins for the digital potentiometer SPI (check if it isn't I2C) interface
   - 1x PWM pin to set the LM317 adjust pin
   - 3x Output pins to power the output transistors
   - 2x Serial communication pins (RX/TX)
