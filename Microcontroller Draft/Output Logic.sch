@@ -493,6 +493,11 @@ P2 = Input 2
 T1 = LM317 Transistor
 T2 = 7805 Transistor
 T3 = LD33V Transistor</text>
+<text x="83.82" y="48.26" size="1.778" layer="91">Truth Table
+P1 | P2 | O
+ H    L     T1
+ L    H     T2
+ L    L      T3</text>
 </plain>
 <instances>
 <instance part="IC1" gate="A" x="25.4" y="30.48"/>
