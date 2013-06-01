@@ -12,4 +12,4 @@ If you want to check out a extremely detailed list requirements for this project
 This project is the work of:
 
  - [Nathan Campos](http://about.me/nathanpc): Everything involved with the electronics part.
- - Narek Babajanyan: Awesome leaf icon.
+ - [Narek Babajanyan](https://twitter.com/narekb): Awesome leaf icon.
