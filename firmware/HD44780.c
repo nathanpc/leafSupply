@@ -112,7 +112,7 @@ void lcd_function_set() {
 	
 	// Last 4 bits of the packet. (00 NF00)
 	P2OUT &= ~(RS + D4 + D5 + D6);
-	P2OUT |= D7;
+	P2OUT |= D7;  // Assumes a 2-line display.
 	
 	// End the data transaction.
 	delay_us(200);
@@ -245,6 +245,48 @@ void lcd_return_home() {
 	// Last 4 bits of the packet. (00 0010)
 	P2OUT &= ~(RS + D4 + D6 + D7);
 	P2OUT |= D5;
+	
+	// End the data transaction.
+	delay_us(200);
+	P2OUT &= ~EN;
+}
+
+/**
+ *	Sets the cursor position.
+ *
+ *	@param line The line.
+ *	@param col The column.
+ */
+void lcd_set_cursor(unsigned int line, unsigned int col) {
+	char offsets[] = { 0x00, 0x40, 0x14, 0x54 };
+	char pos = offsets[line] + col;
+
+	// Put EN HIGH to start sending data.
+	P2OUT |= EN;
+	delay_us(200);
+	
+	// First 4 bits of the packet. (00 1AAA)
+	P2OUT &= ~RS;
+	P2OUT |= D7;
+	bit_to_pin(pos, 4, &P2OUT, D4);
+	bit_to_pin(pos, 5, &P2OUT, D5);
+	bit_to_pin(pos, 6, &P2OUT, D6);
+	
+	// End the packet transaction.
+	delay_us(200);
+	P2OUT &= ~EN;
+
+
+	// Put EN HIGH to start sending data.
+	P2OUT |= EN;
+	delay_us(200);
+	
+	// Last 4 bits of the packet. (00 AAAA)
+	P2OUT &= ~RS;
+	bit_to_pin(pos, 0, &P2OUT, D4);
+	bit_to_pin(pos, 1, &P2OUT, D5);
+	bit_to_pin(pos, 2, &P2OUT, D6);
+	bit_to_pin(pos, 3, &P2OUT, D7);
 	
 	// End the data transaction.
 	delay_us(200);

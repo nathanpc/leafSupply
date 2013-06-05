@@ -21,6 +21,7 @@ void lcd_init(bool cur, bool blk);
 void lcd_return_home();
 void lcd_clear();
 
+void lcd_set_cursor(unsigned int line, unsigned int col);
 void lcd_putc(const char c);
 void lcd_print(const char *string);
 

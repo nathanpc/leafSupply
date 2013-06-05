@@ -18,6 +18,7 @@
 // Interrupt pins.
 #define BT_INT BIT3
 #define RE_A_INT BIT7
+#define RE_B_INT BIT7
 
 unsigned char shift_default_on = 0b11111000;
 
@@ -45,6 +46,7 @@ void main() {
 	// Setup the LCD driver.
 	lcd_init(TRUE, TRUE);
 	
+	lcd_set_cursor(1, 2);
 	lcd_print("Hello, World!");
 	
 	while (TRUE) {
@@ -71,13 +73,13 @@ void handle_bt_press(unsigned int bt) {
 			lcd_return_home();
 			lcd_print("S_MNU1 Pressed");
 			break;
-		case 2:  // S_MNU2
+		case 2:  // S_SEL
+			lcd_return_home();
+			lcd_print("S_SEL Pressed");
+			break;
+		case 3:  // S_MNU2
 			lcd_return_home();
 			lcd_print("S_MNU2 Pressed");
-			break;
-		case 3:  // S_RE
-			lcd_return_home();
-			lcd_print("S_RE Pressed");
 			break;
 		default:
 			lcd_return_home();
@@ -103,10 +105,7 @@ void handle_re_rotation() {
 		sprintf(t,"%d",counter);
 		lcd_return_home();
 		lcd_print(t);
-	}/* else {
-		lcd_return_home();
-		lcd_print("WTF?!");
-	}*/
+	}
 }
 
 #pragma vector = PORT1_VECTOR
