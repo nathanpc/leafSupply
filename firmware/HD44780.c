@@ -11,6 +11,7 @@
 #include "boolean.h"
 #include "HD44780.h"
 #include "delay.h"
+#include "bitio.h"
 
 // Define the LCD pins.
 #define RS BIT1
@@ -21,37 +22,7 @@
 #define D7 BIT6
 
 // Private function declarations.
-unsigned int get_byte(char b, unsigned int pos);
-void bit_to_pin(char c, unsigned int pos, unsigned int pin);
 void _lcd_clear();
-
-
-/**
- * Get a single bit from a byte.
- * 
- * @param b A byte.
- * @param pos The bit position to be extracted.
- * @return A bit.
- */
-unsigned int get_byte(char b, unsigned int pos) {
-	return (b & (1 << pos));
-}
-
-/**
- * Puts the desired bit into a pin. It's used to get the bits in a char
- * to send to the LCD.
- * 
- * @param c The character.
- * @param pos Bit position.
- * @param pin The pin to be set.
- */
-void bit_to_pin(char c, unsigned int pos, unsigned int pin) {
-	if (get_byte(c, pos)) {
-		P2OUT |= pin;
-	} else {
-		P2OUT &= ~pin;
-	}
-}
 
 /**
  * Initialize the LCD driver.
@@ -176,9 +147,9 @@ void lcd_display_control(bool disp, bool cur, bool blk) {
 	P2OUT &= ~RS;
 	P2OUT |= D7;
 	
-	bit_to_pin(disp, 0, D6);
-	bit_to_pin(cur, 0, D5);
-	bit_to_pin(blk, 0, D4);
+	bit_to_pin(disp, 0, &P2OUT, D6);
+	bit_to_pin(cur, 0, &P2OUT, D5);
+	bit_to_pin(blk, 0, &P2OUT, D4);
 	
 	// End the data transaction.
 	delay_us(200);
@@ -293,10 +264,10 @@ void lcd_putc(const char c) {
 	// First 4 bits of the packet. (00 0100)
 	P2OUT |= RS;
 
-	bit_to_pin(c, 4, D4);
-	bit_to_pin(c, 5, D5);
-	bit_to_pin(c, 6, D6);
-	bit_to_pin(c, 7, D7);
+	bit_to_pin(c, 4, &P2OUT, D4);
+	bit_to_pin(c, 5, &P2OUT, D5);
+	bit_to_pin(c, 6, &P2OUT, D6);
+	bit_to_pin(c, 7, &P2OUT, D7);
 
 	// End the packet transaction.
 	delay_us(200);
@@ -310,10 +281,10 @@ void lcd_putc(const char c) {
 	// Last 4 bits of the packet. (00 0001)
 	P2OUT |= RS;
 
-	bit_to_pin(c, 0, D4);
-	bit_to_pin(c, 1, D5);
-	bit_to_pin(c, 2, D6);
-	bit_to_pin(c, 3, D7);
+	bit_to_pin(c, 0, &P2OUT, D4);
+	bit_to_pin(c, 1, &P2OUT, D5);
+	bit_to_pin(c, 2, &P2OUT, D6);
+	bit_to_pin(c, 3, &P2OUT, D7);
 	
 	// End the data transaction.
 	delay_us(200);

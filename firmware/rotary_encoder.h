@@ -11,7 +11,6 @@
 #include <stdint.h>
 #include "boolean.h"
 
-void rotary_encoder_setup();
-bool rotary_encoder_rotation();
+int8_t rotary_encoder_rotation();
 
 #endif  // _ROTARY_ENCODER_DRIVER_H_
