@@ -3,7 +3,7 @@ DEVICE= msp430g2553
 PROJECT = $(NAME)-$(DEVICE)
 CC = msp430-gcc -std=c99 -Os -mmcu=$(DEVICE)
 MSPDEBUG = sudo mspdebug rf2500
-SRC = main.c rotary_encoder.c 74HC595.c HD44780.c delay.c bitio.c ftoa.c
+SRC = main.c rotary_encoder.c 74HC595.c HD44780.c delay.c bitio.c ftoa.c voltage_regulators.c
 
 all: $(PROJECT).elf
 
