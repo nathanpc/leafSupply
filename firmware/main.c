@@ -38,6 +38,9 @@ void setup_interrupts();
 void handle_re_rotation();
 void handle_bt_press(unsigned int bt);
 
+/**
+ *	Where the magic starts.
+ */
 void main() {
 	WDTCTL = WDTPW + WDTHOLD;  // Stop watchdog timer.
 
@@ -60,13 +63,16 @@ void main() {
 	// Initilalize the voltage regulator driver.
 	vreg_init();
 
-	// Example.
-	lcd_print("LM317", 0, 0);
+	// Go to the home screen.
+	print_screen(HOME_SCREEN);
 	
 	while (TRUE) {
 	}
 }
 
+/**
+ *	Setup the interrupts stuff.
+ */
 void setup_interrupts() {
 	P1IES &= ~(BT_INT + RE_A_INT);  // Set the interrupt to be from LOW to HIGH.
 	P1IFG &= ~(BT_INT + RE_A_INT);  // P1.3 and P1.7 IFG cleared
@@ -77,6 +83,11 @@ void setup_interrupts() {
 	//P2IE |= RE_B_INT;    // Set P2.7 as interrupt.
 }
 
+/**
+ *	Prints a "screen".
+ *
+ *	@param title The screen you want to display.
+ */
 void print_screen(const unsigned int title) {
 	lcd_clear();
 
@@ -93,6 +104,9 @@ void print_screen(const unsigned int title) {
 	}
 }
 
+/**
+ *	Cycles between the available voltage regulators.
+ */
 void switch_vreg() {
 	if (vregs.curr_onscreen < 2) {
 		vregs.curr_onscreen++;
@@ -103,6 +117,9 @@ void switch_vreg() {
 	print_screen(HOME_SCREEN);
 }
 
+/**
+ *	Prints the current voltage regulator state. (ON/OFF)
+ */
 void print_vreg_state() {
 	if (vregs.state[vregs.curr_onscreen]) {
 		lcd_print(" ON", 1, 13);
@@ -111,6 +128,9 @@ void print_vreg_state() {
 	}
 }
 
+/**
+ *	Prints the voltage that should be going out of the voltage regulator.
+ */
 void print_voltage() {
 	char vstr[10];
 	ftoa(vstr, vregs.voltages[vregs.curr_onscreen], 1);
@@ -124,6 +144,11 @@ void print_voltage() {
 //	Handlers
 //
 
+/**
+ *	Handles a button press.
+ *
+ *	@param bt A button.
+ */
 void handle_bt_press(unsigned int bt) {
 	switch (bt) {
 		case 0:  // S_PWR
@@ -149,6 +174,9 @@ void handle_bt_press(unsigned int bt) {
 	}
 }
 
+/**
+ *	Handles a rotary encoder rotation.
+ */
 void handle_re_rotation() {
 	if (rotary_encoder_rotation() == 1) {
 		vreg_set_voltage(TRUE);
@@ -164,6 +192,9 @@ void handle_re_rotation() {
 //	Interrupts
 //
 
+/**
+ *	Interrupt service routine for P1.
+ */
 #pragma vector = PORT1_VECTOR
 __interrupt void P1_ISR() {
 	switch(P1IFG & (BT_INT + RE_A_INT)) {
