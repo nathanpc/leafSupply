@@ -7,9 +7,12 @@
 
 #include <msp430g2553.h>
 #include <stdio.h>
+#include <string.h>
+
 #include "boolean.h"
 #include "delay.h"
 #include "bitio.h"
+#include "ftoa.h"
 
 #include "74HC595.h"
 #include "rotary_encoder.h"
@@ -22,8 +25,9 @@
 
 unsigned char shift_default_on = 0b11111000;
 
-int counter = 0; /////////
+float counter = 0.0f; /////////
 
+void print_voltage();
 void setup_interrupts();
 void handle_re_rotation();
 
@@ -45,9 +49,9 @@ void main() {
 	
 	// Setup the LCD driver.
 	lcd_init(TRUE, TRUE);
-	
-	lcd_set_cursor(1, 2);
-	lcd_print("Hello, World!");
+
+	// Example.
+	lcd_print("LM317", 0, 0);
 	
 	while (TRUE) {
 	}
@@ -66,46 +70,42 @@ void setup_interrupts() {
 void handle_bt_press(unsigned int bt) {
 	switch (bt) {
 		case 0:  // S_PWR
-			lcd_return_home();
-			lcd_print("S_PWR Pressed");
+			lcd_print("S_PWR Pressed", 1, 0);
 			break;
 		case 1:  // S_MNU1
-			lcd_return_home();
-			lcd_print("S_MNU1 Pressed");
+			lcd_print("S_MNU1 Pressed", 1, 0);
 			break;
 		case 2:  // S_SEL
-			lcd_return_home();
-			lcd_print("S_SEL Pressed");
+			lcd_print("S_SEL Pressed", 1, 0);
 			break;
 		case 3:  // S_MNU2
-			lcd_return_home();
-			lcd_print("S_MNU2 Pressed");
+			lcd_print("S_MNU2 Pressed", 1, 0);
 			break;
 		default:
-			lcd_return_home();
-			lcd_print("WTF you just pressed?!");
+			lcd_print("WTF you just pressed?!", 1, 0);
 			break;
 	}
 }
 
 void handle_re_rotation() {
 	if (rotary_encoder_rotation() == 1) {
-		counter++;
-		lcd_return_home();
-		//lcd_print("Clockwise");
-		char t[10];
-		sprintf(t,"%d",counter);
-		lcd_return_home();
-		lcd_print(t);
+		counter += 0.1;
+		print_voltage();
 	} else if (rotary_encoder_rotation() == -1) {
-		counter--;
-		lcd_return_home();
-		//lcd_print("Counter Clockwise");
-		char t[10];
-		sprintf(t,"%d",counter);
-		lcd_return_home();
-		lcd_print(t);
+		// Assuming we won't go negative.
+		if (counter > 0) {
+			counter -= 0.1;
+			print_voltage();
+		}
 	}
+}
+
+void print_voltage() {
+	char vstr[10];
+	ftoa(vstr, counter, 1);
+	strcat(vstr, "V");
+	//sprintf(vstr, "%4.2fV", );
+	lcd_print(vstr, 0, 16 - strlen(vstr));
 }
 
 #pragma vector = PORT1_VECTOR
