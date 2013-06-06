@@ -338,9 +338,20 @@ void lcd_putc(const char c) {
  * 
  * @param string The string.
  */
-void lcd_print(const char *string) {
+void _lcd_print(const char *string) {
 	while (*string != '\0') {
-		//if (*string == '\n') {
 		lcd_putc(*string++);
 	}
+}
+
+/**
+ *	Print a string at a position.
+ *
+ *	@param string The string.
+ *	@param line Screen line.
+ *	@param col Screen column.
+ */
+void lcd_print(const char *string, unsigned int line, unsigned int col) {
+	lcd_set_cursor(line, col);
+	_lcd_print(string);
 }
