@@ -2,7 +2,7 @@
  *	main.c
  *	leafSupply firmware for the MSP430G2553 microcontroller.
  *
- * @author Nathan Campos <nathanpc@dreamintech.net>
+ *	@author Nathan Campos <nathanpc@dreamintech.net>
  */
 
 #include <msp430g2553.h>
@@ -24,6 +24,10 @@
 #define RE_A_INT BIT7
 #define RE_B_INT BIT7
 
+// Other pins.
+#define ADC      BIT0
+#define PWM_PIN  BIT2
+
 // Screen codes.
 #define HOME_SCREEN 0
 
@@ -34,6 +38,8 @@ void print_vreg_state();
 void print_screen(const unsigned int title);
 void switch_vreg();
 
+void setup_adc();
+void setup_pwm();
 void setup_interrupts();
 void handle_re_rotation();
 void handle_bt_press(unsigned int bt);
@@ -43,12 +49,13 @@ void handle_bt_press(unsigned int bt);
  */
 void main() {
 	WDTCTL = WDTPW + WDTHOLD;  // Stop watchdog timer.
+	//BCSCTL1 = CALBC1_1MHZ;     // Set range.
+	//DCOCTL = CALDCO_1MHZ;      // SMCLK = DCO = 1MHz
+	//BCSCTL2 &= ~(DIVS_3);
 
-	P1DIR &= ~(BT_INT + RE_A_INT);
-	P2DIR &= ~RE_B_INT;
-	P2SEL &= ~RE_B_INT;  // Turn XOUT into P2.7
-	
-	// Setup the interrupts.
+	// Setup the PWM stuff, ADC, and interrupts.
+	setup_pwm();
+	setup_adc();
 	setup_interrupts();
 	_BIS_SR(GIE);  // TODO: Do (LPMX + GIE) for low-power + interrupts.
 	//__enable_interrupt();
@@ -67,6 +74,14 @@ void main() {
 	print_screen(HOME_SCREEN);
 	
 	while (TRUE) {
+		// TODO: Test the multimeter crap.
+		delay_us(1000);              // Wait for the ADC reference to settle.
+		ADC10CTL0 |= ENC + ADC10SC;  // Sampling and conversion start.
+		char vstr[10];
+		unsigned int v = (ADC10MEM * 3500) / 1024;
+		sprintf(vstr, "%dmV", v);
+		lcd_print(vstr, 1, 0);
+		delay_ms(1000);
 	}
 }
 
@@ -74,6 +89,10 @@ void main() {
  *	Setup the interrupts stuff.
  */
 void setup_interrupts() {
+	P1DIR &= ~(BT_INT + RE_A_INT);
+	P2DIR &= ~RE_B_INT;
+	P2SEL &= ~RE_B_INT;  // Turn XOUT into P2.7
+
 	P1IES &= ~(BT_INT + RE_A_INT);  // Set the interrupt to be from LOW to HIGH.
 	P1IFG &= ~(BT_INT + RE_A_INT);  // P1.3 and P1.7 IFG cleared
 	P1IE |= (BT_INT + RE_A_INT);    // Set P1.3 and P1.7 as interrupt.
@@ -81,6 +100,26 @@ void setup_interrupts() {
 	//P2IES &= ~RE_B_INT;  // Set the interrupt to be from LOW to HIGH.
 	//P2IFG &= ~RE_B_INT;  // P2.7 IFG cleared
 	//P2IE |= RE_B_INT;    // Set P2.7 as interrupt.
+}
+
+void setup_adc() {
+	P1SEL |= ADC;  // Set P1.0 to ADC.
+	ADC10CTL1 = INCH_0 + ADC10DIV_3;  // Channel 1, ADC10CLK/4
+	ADC10CTL0 = SREF_0 + ADC10SHT_3 + ADC10ON + ADC10IE;  // Vcc & Vss as reference
+	ADC10AE0 |= ADC;
+}
+
+/**
+ *	Setup the PWM stuff.
+ */
+void setup_pwm() {
+	P2DIR |= PWM_PIN;
+	P2SEL |= PWM_PIN;      // Set P2.2 to TA1.1
+
+	TA1CCR0  = 256 - 1;    // PWM period.
+	TA1CCTL1 = OUTMOD_7;   // CCR1 Reset/Set.
+	TA1CCR1  = 0;          // CCR1 PWM duty cycle.
+	TA1CTL   = TASSEL_2 + MC_1;
 }
 
 /**

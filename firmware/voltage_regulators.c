@@ -32,13 +32,6 @@ void vreg_init() {
 	vregs.voltages[LM317] = 1.2f;  // TODO: Check if the LM317 is correct.
 	vregs.voltages[VR7805] = 5.0f;
 	vregs.voltages[LD33V] = 3.37f;
-
-	/*vregs = {
-		0,
-		{ 0, 0, 0 },
-		{ "LM317", "7805", "LD33V" },
-		{ 1.2f, 5.0f, 3.3f }
-	};*/
 }
 
 /**

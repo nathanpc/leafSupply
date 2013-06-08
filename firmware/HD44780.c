@@ -14,8 +14,8 @@
 #include "bitio.h"
 
 // Define the LCD pins.
-#define RS BIT1
-#define EN BIT2
+#define RS BIT0
+#define EN BIT1
 #define D4 BIT3
 #define D5 BIT4
 #define D6 BIT5
