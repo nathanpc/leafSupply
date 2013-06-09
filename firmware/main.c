@@ -25,7 +25,6 @@
 #define RE_B_INT BIT7
 
 // Other pins.
-#define ADC      BIT0
 #define PWM_PIN  BIT2
 
 // Screen codes.
@@ -38,7 +37,6 @@ void print_vreg_state();
 void print_screen(const unsigned int title);
 void switch_vreg();
 
-void setup_adc();
 void setup_pwm();
 void setup_interrupts();
 void handle_re_rotation();
@@ -55,7 +53,6 @@ void main() {
 
 	// Setup the PWM stuff, ADC, and interrupts.
 	setup_pwm();
-	setup_adc();
 	setup_interrupts();
 	_BIS_SR(GIE);  // TODO: Do (LPMX + GIE) for low-power + interrupts.
 	//__enable_interrupt();
@@ -72,16 +69,8 @@ void main() {
 
 	// Go to the home screen.
 	print_screen(HOME_SCREEN);
-	
+
 	while (TRUE) {
-		// TODO: Test the multimeter crap.
-		delay_us(1000);              // Wait for the ADC reference to settle.
-		ADC10CTL0 |= ENC + ADC10SC;  // Sampling and conversion start.
-		char vstr[10];
-		unsigned int v = (ADC10MEM * 3500) / 1024;
-		sprintf(vstr, "%dmV", v);
-		lcd_print(vstr, 1, 0);
-		delay_ms(1000);
 	}
 }
 
@@ -96,17 +85,6 @@ void setup_interrupts() {
 	P1IES &= ~(BT_INT + RE_A_INT);  // Set the interrupt to be from LOW to HIGH.
 	P1IFG &= ~(BT_INT + RE_A_INT);  // P1.3 and P1.7 IFG cleared
 	P1IE |= (BT_INT + RE_A_INT);    // Set P1.3 and P1.7 as interrupt.
-
-	//P2IES &= ~RE_B_INT;  // Set the interrupt to be from LOW to HIGH.
-	//P2IFG &= ~RE_B_INT;  // P2.7 IFG cleared
-	//P2IE |= RE_B_INT;    // Set P2.7 as interrupt.
-}
-
-void setup_adc() {
-	P1SEL |= ADC;  // Set P1.0 to ADC.
-	ADC10CTL1 = INCH_0 + ADC10DIV_3;  // Channel 1, ADC10CLK/4
-	ADC10CTL0 = SREF_0 + ADC10SHT_3 + ADC10ON + ADC10IE;  // Vcc & Vss as reference
-	ADC10AE0 |= ADC;
 }
 
 /**
@@ -116,7 +94,7 @@ void setup_pwm() {
 	P2DIR |= PWM_PIN;
 	P2SEL |= PWM_PIN;      // Set P2.2 to TA1.1
 
-	TA1CCR0  = 256 - 1;    // PWM period.
+	TA1CCR0  = 100 - 1;    // PWM period.
 	TA1CCTL1 = OUTMOD_7;   // CCR1 Reset/Set.
 	TA1CCR1  = 0;          // CCR1 PWM duty cycle.
 	TA1CTL   = TASSEL_2 + MC_1;
@@ -132,6 +110,7 @@ void print_screen(const unsigned int title) {
 
 	switch (title) {
 		case HOME_SCREEN:
+			// Example:
 			// +----------------+
 			// |LM317       7.8V|
 			// |             OFF|
@@ -172,9 +151,13 @@ void print_vreg_state() {
  */
 void print_voltage() {
 	char vstr[10];
-	ftoa(vstr, vregs.voltages[vregs.curr_onscreen], 1);
-	strcat(vstr, "V");
-	//sprintf(vstr, "%4.2fV", );
+	if (vregs.curr_onscreen != LM317) {
+		ftoa(vstr, vregs.voltages[vregs.curr_onscreen], 1);
+		strcat(vstr, "V");
+	} else {
+		sprintf(vstr, "  %d%%", vregs.pwm[vregs.curr_onscreen]);
+	}
+
 	lcd_print(vstr, 0, 16 - strlen(vstr));
 }
 
@@ -204,7 +187,7 @@ void handle_bt_press(unsigned int bt) {
 		case 3:  // S_MNU2
 			// Toogle ON/OFF
 			//lcd_print("S_MNU2 Pressed", 1, 0);
-			toogle_power(&shift_default_on, vregs.curr_onscreen);
+			toggle_power(&shift_default_on, vregs.curr_onscreen);
 			print_vreg_state();
 			break;
 		default:

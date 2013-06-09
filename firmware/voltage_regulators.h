@@ -20,12 +20,15 @@ typedef struct {
 
 	char *list[3];
 	float voltages[3];
+	unsigned int pwm[3];
 } voltage_regulators;
 
 voltage_regulators vregs;
 
 void vreg_init();
 void vreg_set_voltage(bool increment);
-void toogle_power(unsigned char *shift_register, const unsigned int vreg);
+
+void toggle_pwm(const unsigned int vreg);
+void toggle_power(unsigned char *shift_register, const unsigned int vreg);
 
 #endif  // _VOLTAGE_REGULATORS_H_

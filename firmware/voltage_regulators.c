@@ -29,9 +29,13 @@ void vreg_init() {
 	vregs.list[VR7805] = "7805";
 	vregs.list[LD33V] = "LD33V";
 
-	vregs.voltages[LM317] = 1.2f;  // TODO: Check if the LM317 is correct.
+	vregs.voltages[LM317] = 1.2f;
 	vregs.voltages[VR7805] = 5.0f;
 	vregs.voltages[LD33V] = 3.37f;
+
+	vregs.pwm[LM317] = 0;
+	vregs.pwm[VR7805] = 0;
+	vregs.pwm[LD33V] = 0;
 }
 
 /**
@@ -42,23 +46,44 @@ void vreg_init() {
 void vreg_set_voltage(bool increment) {
 	if (vregs.curr_onscreen == LM317) {
 		if (increment) {
-			vregs.voltages[LM317] += 0.1;
+			// Assuming the PWM max is 100.
+			if (vregs.pwm[LM317] < 100) {
+				//vregs.voltages[LM317] += 0.1;
+				vregs.pwm[LM317] += 1;
+			}
 		} else {
 			// Assuming we won't go negative.
-			if (vregs.voltages[LM317] > 0) {
-				vregs.voltages[LM317] -= 0.1;
+			if (vregs.pwm[LM317] > 0) {
+				//vregs.voltages[LM317] -= 0.1;
+				vregs.pwm[LM317] -= 1;
 			}
+		}
+
+		if (vregs.state[LM317]) {
+			TA1CCR1 = vregs.pwm[LM317];
 		}
 	}
 }
 
+void toggle_pwm(const unsigned int vreg) {
+	if (vregs.state[vreg]) {
+		TA1CCR1 = 0;
+	} else {
+		TA1CCR1 = vregs.pwm[vreg];
+	}
+}
+
 /**
- *	Toogle a voltage regulator power.
+ *	Toggle a voltage regulator power.
  *
  *	@param shift_register A pointer to the shift register mask.
  *	@param vreg Desired voltage regulator to be toogled.
  */
-void toogle_power(unsigned char *shift_register, const unsigned int vreg) {
+void toggle_power(unsigned char *shift_register, const unsigned int vreg) {
+	if (vreg == LM317) {
+		toggle_pwm(vreg);
+	}
+
 	if (vregs.state[vreg]) {
 		vregs.state[vreg] = 0;
 	} else {
