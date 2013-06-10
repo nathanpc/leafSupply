@@ -366,7 +366,7 @@ UsedLibrary="/home/nathanpc/.eagle/lbr/elektro/eib-busch-jaeger.lbr"
 
 [Win_1]
 Type="Control Panel"
-Loc="1259 28 1858 427"
+Loc="1252 28 1851 427"
 State=2
 Number=0
 
