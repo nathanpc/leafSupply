@@ -181,10 +181,7 @@ void handle_bt_press(unsigned int bt) {
 			//lcd_print("S_MNU1 Pressed", 1, 0);
 			switch_vreg();
 			break;
-		case 2:  // S_SEL
-			lcd_print("S_SEL Pressed", 1, 0);
-			break;
-		case 3:  // S_MNU2
+		case 2:  // S_MNU2
 			// Toogle ON/OFF
 			//lcd_print("S_MNU2 Pressed", 1, 0);
 			toggle_power(&shift_default_on, vregs.curr_onscreen);

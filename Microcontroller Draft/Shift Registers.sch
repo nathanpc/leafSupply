@@ -3685,7 +3685,6 @@ high speed (Philips)</description>
 <parts>
 <part name="S_PWR" library="switch-omron" deviceset="10-XX" device=""/>
 <part name="S_MNU1" library="switch-omron" deviceset="10-XX" device=""/>
-<part name="S_SEL" library="switch-omron" deviceset="10-XX" device=""/>
 <part name="S_MNU2" library="switch-omron" deviceset="10-XX" device=""/>
 <part name="SR_INPUT" library="74xx-eu" deviceset="74*595" device="N" technology="HC"/>
 <part name="R1" library="resistor" deviceset="R-EU_" device="0207/10" value="10kΩ"/>
@@ -3693,7 +3692,6 @@ high speed (Philips)</description>
 <part name="D2" library="diode" deviceset="1N4148" device="DO35-7"/>
 <part name="D3" library="diode" deviceset="1N4148" device="DO35-7"/>
 <part name="D4" library="diode" deviceset="1N4148" device="DO35-7"/>
-<part name="D5" library="diode" deviceset="1N4148" device="DO35-7"/>
 <part name="GND2" library="supply1" deviceset="GNDA" device=""/>
 <part name="+3V1" library="supply1" deviceset="+3V3" device=""/>
 </parts>
@@ -3704,15 +3702,13 @@ high speed (Philips)</description>
 <instances>
 <instance part="S_PWR" gate="1" x="114.3" y="160.02" rot="R270"/>
 <instance part="S_MNU1" gate="1" x="114.3" y="134.62" rot="R270"/>
-<instance part="S_SEL" gate="1" x="114.3" y="119.38" rot="R270"/>
-<instance part="S_MNU2" gate="1" x="114.3" y="104.14" rot="R270"/>
+<instance part="S_MNU2" gate="1" x="114.3" y="119.38" rot="R270"/>
 <instance part="SR_INPUT" gate="A" x="50.8" y="109.22"/>
-<instance part="R1" gate="G$1" x="116.84" y="25.4" rot="R90"/>
-<instance part="GND1" gate="1" x="116.84" y="10.16"/>
+<instance part="R1" gate="G$1" x="116.84" y="93.98" rot="R90"/>
+<instance part="GND1" gate="1" x="116.84" y="83.82"/>
 <instance part="D2" gate="G$1" x="86.36" y="160.02"/>
 <instance part="D3" gate="G$1" x="86.36" y="134.62"/>
 <instance part="D4" gate="G$1" x="86.36" y="119.38"/>
-<instance part="D5" gate="G$1" x="86.36" y="104.14"/>
 <instance part="GND2" gate="1" x="35.56" y="86.36"/>
 <instance part="+3V1" gate="G$1" x="35.56" y="132.08"/>
 </instances>
@@ -3725,25 +3721,19 @@ high speed (Philips)</description>
 <wire x1="119.38" y1="157.48" x2="134.62" y2="157.48" width="0.1524" layer="91"/>
 <wire x1="134.62" y1="157.48" x2="134.62" y2="132.08" width="0.1524" layer="91"/>
 <wire x1="134.62" y1="132.08" x2="134.62" y2="116.84" width="0.1524" layer="91"/>
-<wire x1="134.62" y1="116.84" x2="134.62" y2="101.6" width="0.1524" layer="91"/>
-<wire x1="134.62" y1="101.6" x2="134.62" y2="38.1" width="0.1524" layer="91"/>
-<wire x1="134.62" y1="38.1" x2="116.84" y2="38.1" width="0.1524" layer="91"/>
+<wire x1="134.62" y1="116.84" x2="134.62" y2="104.14" width="0.1524" layer="91"/>
+<wire x1="134.62" y1="104.14" x2="116.84" y2="104.14" width="0.1524" layer="91"/>
 <pinref part="S_MNU1" gate="1" pin="S1"/>
-<wire x1="116.84" y1="38.1" x2="66.04" y2="38.1" width="0.1524" layer="91"/>
 <wire x1="119.38" y1="132.08" x2="134.62" y2="132.08" width="0.1524" layer="91"/>
-<pinref part="S_SEL" gate="1" pin="S1"/>
-<wire x1="119.38" y1="116.84" x2="134.62" y2="116.84" width="0.1524" layer="91"/>
 <pinref part="S_MNU2" gate="1" pin="S1"/>
-<wire x1="119.38" y1="101.6" x2="134.62" y2="101.6" width="0.1524" layer="91"/>
+<wire x1="119.38" y1="116.84" x2="134.62" y2="116.84" width="0.1524" layer="91"/>
 <junction x="134.62" y="132.08"/>
 <junction x="134.62" y="116.84"/>
-<junction x="134.62" y="101.6"/>
 <pinref part="R1" gate="G$1" pin="2"/>
-<wire x1="116.84" y1="30.48" x2="116.84" y2="38.1" width="0.1524" layer="91"/>
-<junction x="116.84" y="38.1"/>
-<wire x1="10.16" y1="76.2" x2="66.04" y2="76.2" width="0.1524" layer="91"/>
-<wire x1="66.04" y1="76.2" x2="66.04" y2="38.1" width="0.1524" layer="91"/>
-<label x="7.62" y="73.66" size="1.778" layer="95"/>
+<wire x1="116.84" y1="99.06" x2="116.84" y2="104.14" width="0.1524" layer="91"/>
+<wire x1="116.84" y1="104.14" x2="96.52" y2="104.14" width="0.1524" layer="91"/>
+<label x="96.52" y="101.6" size="1.778" layer="95"/>
+<junction x="116.84" y="104.14"/>
 </segment>
 </net>
 <net name="+3V3" class="0">
@@ -3758,7 +3748,7 @@ high speed (Philips)</description>
 <segment>
 <pinref part="GND1" gate="1" pin="GNDA"/>
 <pinref part="R1" gate="G$1" pin="1"/>
-<wire x1="116.84" y1="12.7" x2="116.84" y2="20.32" width="0.1524" layer="91"/>
+<wire x1="116.84" y1="86.36" x2="116.84" y2="88.9" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="SR_INPUT" gate="A" pin="G"/>
@@ -3784,51 +3774,26 @@ high speed (Philips)</description>
 <net name="N$4" class="0">
 <segment>
 <pinref part="D4" gate="G$1" pin="C"/>
-<pinref part="S_SEL" gate="1" pin="P"/>
-<wire x1="88.9" y1="119.38" x2="109.22" y2="119.38" width="0.1524" layer="91"/>
-</segment>
-</net>
-<net name="N$5" class="0">
-<segment>
-<pinref part="D5" gate="G$1" pin="C"/>
 <pinref part="S_MNU2" gate="1" pin="P"/>
-<wire x1="88.9" y1="104.14" x2="109.22" y2="104.14" width="0.1524" layer="91"/>
+<wire x1="88.9" y1="119.38" x2="109.22" y2="119.38" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="T_5V" class="0">
 <segment>
 <pinref part="SR_INPUT" gate="A" pin="QG"/>
-<wire x1="71.12" y1="63.5" x2="71.12" y2="104.14" width="0.1524" layer="91"/>
+<wire x1="71.12" y1="66.04" x2="71.12" y2="104.14" width="0.1524" layer="91"/>
 <wire x1="71.12" y1="104.14" x2="63.5" y2="104.14" width="0.1524" layer="91"/>
-<wire x1="71.12" y1="63.5" x2="165.1" y2="63.5" width="0.1524" layer="91"/>
-<label x="162.56" y="60.96" size="1.778" layer="95"/>
+<wire x1="71.12" y1="66.04" x2="91.44" y2="66.04" width="0.1524" layer="91"/>
+<label x="88.9" y="63.5" size="1.778" layer="95"/>
 </segment>
 </net>
-<net name="T_VARV" class="0">
+<net name="T_ADJV" class="0">
 <segment>
 <pinref part="SR_INPUT" gate="A" pin="QF"/>
 <wire x1="73.66" y1="76.2" x2="73.66" y2="106.68" width="0.1524" layer="91"/>
 <wire x1="73.66" y1="106.68" x2="63.5" y2="106.68" width="0.1524" layer="91"/>
-<wire x1="73.66" y1="76.2" x2="165.1" y2="76.2" width="0.1524" layer="91"/>
-<label x="162.56" y="73.66" size="1.778" layer="95"/>
-</segment>
-</net>
-<net name="LCD_EN" class="0">
-<segment>
-<wire x1="165.1" y1="88.9" x2="76.2" y2="88.9" width="0.1524" layer="91"/>
-<wire x1="76.2" y1="88.9" x2="76.2" y2="109.22" width="0.1524" layer="91"/>
-<pinref part="SR_INPUT" gate="A" pin="QE"/>
-<wire x1="76.2" y1="109.22" x2="63.5" y2="109.22" width="0.1524" layer="91"/>
-<label x="162.56" y="86.36" size="1.778" layer="95"/>
-</segment>
-</net>
-<net name="N$15" class="0">
-<segment>
-<pinref part="D5" gate="G$1" pin="A"/>
-<wire x1="83.82" y1="104.14" x2="78.74" y2="104.14" width="0.1524" layer="91"/>
-<wire x1="78.74" y1="104.14" x2="78.74" y2="111.76" width="0.1524" layer="91"/>
-<pinref part="SR_INPUT" gate="A" pin="QD"/>
-<wire x1="78.74" y1="111.76" x2="63.5" y2="111.76" width="0.1524" layer="91"/>
+<wire x1="73.66" y1="76.2" x2="91.44" y2="76.2" width="0.1524" layer="91"/>
+<label x="88.9" y="73.66" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="N$16" class="0">
@@ -3883,9 +3848,9 @@ high speed (Philips)</description>
 <segment>
 <pinref part="SR_INPUT" gate="A" pin="QH"/>
 <wire x1="63.5" y1="101.6" x2="68.58" y2="101.6" width="0.1524" layer="91"/>
-<wire x1="68.58" y1="101.6" x2="68.58" y2="48.26" width="0.1524" layer="91"/>
-<wire x1="68.58" y1="48.26" x2="165.1" y2="48.26" width="0.1524" layer="91"/>
-<label x="162.56" y="45.72" size="1.778" layer="95"/>
+<wire x1="68.58" y1="101.6" x2="68.58" y2="55.88" width="0.1524" layer="91"/>
+<wire x1="68.58" y1="55.88" x2="91.44" y2="55.88" width="0.1524" layer="91"/>
+<label x="88.9" y="53.34" size="1.778" layer="95"/>
 </segment>
 </net>
 </nets>
