@@ -7414,7 +7414,7 @@ type RDH, grid 15 mm</description>
 <label x="119.38" y="73.66" size="1.778" layer="95" rot="R90"/>
 </segment>
 </net>
-<net name="ROT_A" class="0">
+<net name="RE_A" class="0">
 <segment>
 <pinref part="U$1" gate="G$1" pin="15"/>
 <wire x1="111.76" y1="53.34" x2="129.54" y2="53.34" width="0.1524" layer="91"/>
@@ -7422,7 +7422,7 @@ type RDH, grid 15 mm</description>
 <label x="132.08" y="73.66" size="1.778" layer="95" rot="R90"/>
 </segment>
 </net>
-<net name="ROT_B" class="0">
+<net name="RE_B" class="0">
 <segment>
 <pinref part="U$1" gate="G$1" pin="18"/>
 <wire x1="111.76" y1="60.96" x2="134.62" y2="60.96" width="0.1524" layer="91"/>
