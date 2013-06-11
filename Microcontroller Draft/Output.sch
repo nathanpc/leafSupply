@@ -14522,7 +14522,7 @@ will be further integrated into the Sparkfun Library for other footprints.  It c
 <part name="SUPPLY8" library="supply2" deviceset="GND" device=""/>
 <part name="SUPPLY9" library="supply2" deviceset="GND" device=""/>
 <part name="C5" library="rcl" deviceset="C-EU" device="025-025X050" value="0.1uF"/>
-<part name="JP_LM317\" library="pinhead" deviceset="PINHD-1X2" device=""/>
+<part name="JP_LM317" library="pinhead" deviceset="PINHD-1X2" device=""/>
 <part name="JP_7805" library="pinhead" deviceset="PINHD-1X2" device=""/>
 <part name="JP_LD33V" library="pinhead" deviceset="PINHD-1X2" device=""/>
 <part name="CON_LM317" library="SparkFun-Connectors" deviceset="M02" device="JST-PTH-2"/>
@@ -14573,7 +14573,7 @@ will be further integrated into the Sparkfun Library for other footprints.  It c
 <instance part="SUPPLY8" gate="GND" x="223.52" y="119.38"/>
 <instance part="SUPPLY9" gate="GND" x="45.72" y="88.9"/>
 <instance part="C5" gate="G$1" x="45.72" y="99.06"/>
-<instance part="JP_LM317\" gate="G$1" x="307.34" y="111.76" rot="R90"/>
+<instance part="JP_LM317" gate="G$1" x="307.34" y="111.76" rot="R90"/>
 <instance part="JP_7805" gate="G$1" x="307.34" y="76.2" rot="R90"/>
 <instance part="JP_LD33V" gate="G$1" x="307.34" y="40.64" rot="R90"/>
 <instance part="CON_LM317" gate="G$1" x="327.66" y="101.6" rot="R180"/>
@@ -14763,7 +14763,7 @@ will be further integrated into the Sparkfun Library for other footprints.  It c
 <label x="254" y="96.52" size="1.778" layer="95"/>
 </segment>
 <segment>
-<pinref part="JP_LM317\" gate="G$1" pin="1"/>
+<pinref part="JP_LM317" gate="G$1" pin="1"/>
 <wire x1="304.8" y1="109.22" x2="304.8" y2="99.06" width="0.1524" layer="91"/>
 <wire x1="304.8" y1="99.06" x2="292.1" y2="99.06" width="0.1524" layer="91"/>
 <label x="281.94" y="96.52" size="1.778" layer="95"/>
@@ -14771,7 +14771,6 @@ will be further integrated into the Sparkfun Library for other footprints.  It c
 </net>
 <net name="LM317_IN" class="0">
 <segment>
-<wire x1="205.74" y1="99.06" x2="208.28" y2="99.06" width="0.1524" layer="91"/>
 <pinref part="VADJ+" gate="A" pin="IN"/>
 <wire x1="205.74" y1="99.06" x2="180.34" y2="99.06" width="0.1524" layer="91"/>
 <label x="177.8" y="96.52" size="1.778" layer="95"/>
@@ -14940,7 +14939,7 @@ will be further integrated into the Sparkfun Library for other footprints.  It c
 </net>
 <net name="N$7" class="0">
 <segment>
-<pinref part="JP_LM317\" gate="G$1" pin="2"/>
+<pinref part="JP_LM317" gate="G$1" pin="2"/>
 <wire x1="307.34" y1="109.22" x2="307.34" y2="99.06" width="0.1524" layer="91"/>
 <wire x1="307.34" y1="99.06" x2="320.04" y2="99.06" width="0.1524" layer="91"/>
 <pinref part="CON_LM317" gate="G$1" pin="2"/>
