@@ -17411,19 +17411,19 @@ For Reference, see Amotec Display part ADM0802A (http://amotec-display.com/pdf/A
 </sheet>
 </sheets>
 <errors>
-<approved hash="104,1,58.42,198.12,SR_INPUTP,VCC,+5V,,,"/>
-<approved hash="104,1,424.18,101.6,U1,VDD,VIN,,,"/>
-<approved hash="202,1,424.18,91.44,U1,2IN+,,,,"/>
-<approved hash="202,1,424.18,88.9,U1,2IN-,,,,"/>
-<approved hash="104,1,287.02,167.64,U2,A,+5V,,,"/>
-<approved hash="104,1,289.56,167.64,U2,K,GND,,,"/>
-<approved hash="104,1,254,167.64,U2,VDD,+5V,,,"/>
-<approved hash="104,1,251.46,167.64,U2,VSS,GND,,,"/>
-<approved hash="115,1,314.829,52.0277,JP1,,,,,"/>
-<approved hash="115,1,299.72,88.5105,S_RST,,,,,"/>
-<approved hash="115,1,116.84,195.191,S_PWR,,,,,"/>
-<approved hash="115,1,116.84,169.791,S_MNU1,,,,,"/>
-<approved hash="115,1,116.84,154.551,S_MNU2,,,,,"/>
+<approved hash="104,1,10.16,198.12,SR_INPUTP,VCC,+5V,,,"/>
+<approved hash="104,1,406.4,101.6,U1,VDD,VIN,,,"/>
+<approved hash="202,1,406.4,91.44,U1,2IN+,,,,"/>
+<approved hash="202,1,406.4,88.9,U1,2IN-,,,,"/>
+<approved hash="104,1,276.86,185.42,U2,A,+5V,,,"/>
+<approved hash="104,1,279.4,185.42,U2,K,GND,,,"/>
+<approved hash="104,1,243.84,185.42,U2,VDD,+5V,,,"/>
+<approved hash="104,1,241.3,185.42,U2,VSS,GND,,,"/>
+<approved hash="115,1,304.669,69.8077,JP1,,,,,"/>
+<approved hash="115,1,289.56,106.291,S_RST,,,,,"/>
+<approved hash="115,1,68.58,195.191,S_PWR,,,,,"/>
+<approved hash="115,1,68.58,169.791,S_MNU1,,,,,"/>
+<approved hash="115,1,68.58,154.551,S_MNU2,,,,,"/>
 <approved hash="115,1,574.04,109.703,VADJ+,,,,,"/>
 <approved hash="115,1,665.349,126.729,JP_LM317,,,,,"/>
 <approved hash="115,1,665.349,90.1108,JP_7805,,,,,"/>
