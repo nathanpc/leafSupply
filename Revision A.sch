@@ -16683,10 +16683,10 @@ For Reference, see Amotec Display part ADM0802A (http://amotec-display.com/pdf/A
 <instance part="C1" gate="G$1" x="198.12" y="91.44" rot="R90"/>
 <instance part="SUPPLY4" gate="GND" x="320.04" y="73.66"/>
 <instance part="P+4" gate="1" x="320.04" y="91.44"/>
-<instance part="SUPPLY5" gate="GND" x="284.48" y="73.66"/>
+<instance part="SUPPLY5" gate="GND" x="274.32" y="93.98"/>
 <instance part="R2" gate="G$1" x="292.1" y="83.82" rot="R180"/>
 <instance part="S_RST" gate="1" x="289.56" y="104.14" rot="R270"/>
-<instance part="P+5" gate="1" x="274.32" y="114.3"/>
+<instance part="P+5" gate="1" x="284.48" y="96.52"/>
 <instance part="R1" gate="R?" x="246.38" y="152.4"/>
 <instance part="SUPPLY6" gate="GND" x="241.3" y="165.1"/>
 <instance part="P+6" gate="1" x="231.14" y="195.58"/>
@@ -16797,12 +16797,6 @@ For Reference, see Amotec Display part ADM0802A (http://amotec-display.com/pdf/A
 <wire x1="320.04" y1="83.82" x2="320.04" y2="88.9" width="0.1524" layer="91"/>
 </segment>
 <segment>
-<pinref part="S_RST" gate="1" pin="P"/>
-<pinref part="P+5" gate="1" pin="+5V"/>
-<wire x1="284.48" y1="104.14" x2="274.32" y2="104.14" width="0.1524" layer="91"/>
-<wire x1="274.32" y1="104.14" x2="274.32" y2="111.76" width="0.1524" layer="91"/>
-</segment>
-<segment>
 <wire x1="243.84" y1="185.42" x2="243.84" y2="177.8" width="0.1524" layer="91"/>
 <pinref part="P+6" gate="1" pin="+5V"/>
 <wire x1="243.84" y1="177.8" x2="236.22" y2="177.8" width="0.1524" layer="91"/>
@@ -16844,6 +16838,12 @@ For Reference, see Amotec Display part ADM0802A (http://amotec-display.com/pdf/A
 <wire x1="114.3" y1="157.48" x2="124.46" y2="157.48" width="0.1524" layer="91"/>
 <wire x1="124.46" y1="157.48" x2="124.46" y2="162.56" width="0.1524" layer="91"/>
 </segment>
+<segment>
+<pinref part="R2" gate="G$1" pin="2"/>
+<wire x1="287.02" y1="83.82" x2="284.48" y2="83.82" width="0.1524" layer="91"/>
+<pinref part="P+5" gate="1" pin="+5V"/>
+<wire x1="284.48" y1="83.82" x2="284.48" y2="93.98" width="0.1524" layer="91"/>
+</segment>
 </net>
 <net name="GND" class="0">
 <segment>
@@ -16873,12 +16873,6 @@ For Reference, see Amotec Display part ADM0802A (http://amotec-display.com/pdf/A
 <pinref part="SUPPLY4" gate="GND" pin="GND"/>
 <wire x1="312.42" y1="81.28" x2="320.04" y2="81.28" width="0.1524" layer="91"/>
 <wire x1="320.04" y1="81.28" x2="320.04" y2="76.2" width="0.1524" layer="91"/>
-</segment>
-<segment>
-<pinref part="R2" gate="G$1" pin="2"/>
-<pinref part="SUPPLY5" gate="GND" pin="GND"/>
-<wire x1="287.02" y1="83.82" x2="284.48" y2="83.82" width="0.1524" layer="91"/>
-<wire x1="284.48" y1="83.82" x2="284.48" y2="76.2" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="SUPPLY6" gate="GND" pin="GND"/>
@@ -17014,6 +17008,12 @@ For Reference, see Amotec Display part ADM0802A (http://amotec-display.com/pdf/A
 <wire x1="180.34" y1="172.72" x2="190.5" y2="172.72" width="0.1524" layer="91"/>
 <wire x1="190.5" y1="172.72" x2="190.5" y2="165.1" width="0.1524" layer="91"/>
 <pinref part="SUPPLY12" gate="GND" pin="GND"/>
+</segment>
+<segment>
+<pinref part="S_RST" gate="1" pin="P"/>
+<wire x1="284.48" y1="104.14" x2="274.32" y2="104.14" width="0.1524" layer="91"/>
+<pinref part="SUPPLY5" gate="GND" pin="GND"/>
+<wire x1="274.32" y1="104.14" x2="274.32" y2="96.52" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="INT" class="0">
