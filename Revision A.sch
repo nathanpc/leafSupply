@@ -16581,7 +16581,6 @@ For Reference, see Amotec Display part ADM0802A (http://amotec-display.com/pdf/A
 <part name="P+1" library="supply1" deviceset="+5V" device=""/>
 <part name="SUPPLY1" library="supply2" deviceset="GND" device=""/>
 <part name="U$1" library="TI_MSP430_v16" deviceset="G2XX3---N20" device=""/>
-<part name="IC1" library="linear" deviceset="78*" device="T" technology="05"/>
 <part name="SUPPLY2" library="supply2" deviceset="GND" device=""/>
 <part name="P+2" library="supply1" deviceset="+5V" device=""/>
 <part name="SUPPLY3" library="supply2" deviceset="GND" device=""/>
@@ -16665,6 +16664,7 @@ For Reference, see Amotec Display part ADM0802A (http://amotec-display.com/pdf/A
 <part name="P+10" library="supply1" deviceset="+5V" device=""/>
 <part name="J1" library="SparkFun-Connectors" deviceset="POWER_JACK" device="PTH"/>
 <part name="SUPPLY12" library="supply2" deviceset="GND" device=""/>
+<part name="IC2" library="v-reg" deviceset="LD117A?*" device="V" technology="33"/>
 </parts>
 <sheets>
 <sheet>
@@ -16674,7 +16674,6 @@ For Reference, see Amotec Display part ADM0802A (http://amotec-display.com/pdf/A
 <instance part="P+1" gate="1" x="170.18" y="99.06"/>
 <instance part="SUPPLY1" gate="GND" x="254" y="40.64"/>
 <instance part="U$1" gate="G$1" x="200.66" y="73.66"/>
-<instance part="IC1" gate="A1" x="200.66" y="134.62"/>
 <instance part="SUPPLY2" gate="GND" x="200.66" y="121.92"/>
 <instance part="P+2" gate="1" x="215.9" y="142.24"/>
 <instance part="SUPPLY3" gate="GND" x="312.42" y="50.8"/>
@@ -16759,6 +16758,7 @@ For Reference, see Amotec Display part ADM0802A (http://amotec-display.com/pdf/A
 <instance part="P+10" gate="1" x="124.46" y="165.1"/>
 <instance part="J1" gate="G$1" x="177.8" y="170.18"/>
 <instance part="SUPPLY12" gate="GND" x="190.5" y="162.56"/>
+<instance part="IC2" gate="G$1" x="200.66" y="134.62"/>
 </instances>
 <busses>
 </busses>
@@ -16777,10 +16777,10 @@ For Reference, see Amotec Display part ADM0802A (http://amotec-display.com/pdf/A
 <junction x="170.18" y="91.44"/>
 </segment>
 <segment>
-<pinref part="IC1" gate="A1" pin="VO"/>
-<wire x1="210.82" y1="134.62" x2="215.9" y2="134.62" width="0.1524" layer="91"/>
+<wire x1="208.28" y1="134.62" x2="215.9" y2="134.62" width="0.1524" layer="91"/>
 <wire x1="215.9" y1="134.62" x2="215.9" y2="139.7" width="0.1524" layer="91"/>
 <pinref part="P+2" gate="1" pin="+5V"/>
+<pinref part="IC2" gate="G$1" pin="OUT"/>
 </segment>
 <segment>
 <wire x1="309.88" y1="66.04" x2="309.88" y2="58.42" width="0.1524" layer="91"/>
@@ -16858,9 +16858,9 @@ For Reference, see Amotec Display part ADM0802A (http://amotec-display.com/pdf/A
 <junction x="226.06" y="81.28"/>
 </segment>
 <segment>
-<pinref part="IC1" gate="A1" pin="GND"/>
 <pinref part="SUPPLY2" gate="GND" pin="GND"/>
 <wire x1="200.66" y1="127" x2="200.66" y2="124.46" width="0.1524" layer="91"/>
+<pinref part="IC2" gate="G$1" pin="ADJ"/>
 </segment>
 <segment>
 <wire x1="312.42" y1="66.04" x2="312.42" y2="53.34" width="0.1524" layer="91"/>
@@ -17047,10 +17047,10 @@ For Reference, see Amotec Display part ADM0802A (http://amotec-display.com/pdf/A
 </net>
 <net name="VIN" class="0">
 <segment>
-<pinref part="IC1" gate="A1" pin="VI"/>
-<wire x1="190.5" y1="134.62" x2="185.42" y2="134.62" width="0.1524" layer="91"/>
+<wire x1="193.04" y1="134.62" x2="185.42" y2="134.62" width="0.1524" layer="91"/>
 <wire x1="185.42" y1="134.62" x2="185.42" y2="139.7" width="0.1524" layer="91"/>
 <label x="182.88" y="139.7" size="1.778" layer="95"/>
+<pinref part="IC2" gate="G$1" pin="IN"/>
 </segment>
 <segment>
 <pinref part="U1" gate="A" pin="VDD"/>
