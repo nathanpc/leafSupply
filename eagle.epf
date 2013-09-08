@@ -384,7 +384,7 @@ UsedLibrary="Custom Stuff.lbr"
 
 [Win_1]
 Type="Control Panel"
-Loc="1121 144 1809 572"
+Loc="1051 224 1783 594"
 State=2
 Number=0
 
