@@ -17024,6 +17024,72 @@ In this library the device names are the same as the pin names of the symbols, t
 </deviceset>
 </devicesets>
 </library>
+<library name="transistor-npn">
+<description>&lt;b&gt;NPN Transistors&lt;/b&gt;&lt;p&gt;
+&lt;author&gt;Created by librarian@cadsoft.de&lt;/author&gt;</description>
+<packages>
+<package name="SOT23-BEC">
+<description>TO-236 ITT Intermetall</description>
+<wire x1="1.4224" y1="0.6604" x2="1.4224" y2="-0.6604" width="0.127" layer="51"/>
+<wire x1="1.4224" y1="-0.6604" x2="-1.4224" y2="-0.6604" width="0.127" layer="51"/>
+<wire x1="-1.4224" y1="-0.6604" x2="-1.4224" y2="0.6604" width="0.127" layer="51"/>
+<wire x1="-1.4224" y1="0.6604" x2="1.4224" y2="0.6604" width="0.127" layer="51"/>
+<smd name="C" x="0" y="1.1" dx="1" dy="1.4" layer="1"/>
+<smd name="E" x="0.95" y="-1.1" dx="1" dy="1.4" layer="1"/>
+<smd name="B" x="-0.95" y="-1.1" dx="1" dy="1.4" layer="1"/>
+<text x="-1.905" y="1.905" size="1.27" layer="25">&gt;NAME</text>
+<text x="-1.905" y="-3.175" size="1.27" layer="27">&gt;VALUE</text>
+<rectangle x1="-0.2286" y1="0.7112" x2="0.2286" y2="1.2954" layer="51"/>
+<rectangle x1="0.7112" y1="-1.2954" x2="1.1684" y2="-0.7112" layer="51"/>
+<rectangle x1="-1.1684" y1="-1.2954" x2="-0.7112" y2="-0.7112" layer="51"/>
+</package>
+</packages>
+<symbols>
+<symbol name="NPN">
+<wire x1="2.54" y1="2.54" x2="0.508" y2="1.524" width="0.1524" layer="94"/>
+<wire x1="1.778" y1="-1.524" x2="2.54" y2="-2.54" width="0.1524" layer="94"/>
+<wire x1="2.54" y1="-2.54" x2="1.27" y2="-2.54" width="0.1524" layer="94"/>
+<wire x1="1.27" y1="-2.54" x2="1.778" y2="-1.524" width="0.1524" layer="94"/>
+<wire x1="1.54" y1="-2.04" x2="0.308" y2="-1.424" width="0.1524" layer="94"/>
+<wire x1="1.524" y1="-2.413" x2="2.286" y2="-2.413" width="0.254" layer="94"/>
+<wire x1="2.286" y1="-2.413" x2="1.778" y2="-1.778" width="0.254" layer="94"/>
+<wire x1="1.778" y1="-1.778" x2="1.524" y2="-2.286" width="0.254" layer="94"/>
+<wire x1="1.524" y1="-2.286" x2="1.905" y2="-2.286" width="0.254" layer="94"/>
+<wire x1="1.905" y1="-2.286" x2="1.778" y2="-2.032" width="0.254" layer="94"/>
+<text x="-10.16" y="7.62" size="1.778" layer="95">&gt;NAME</text>
+<text x="-10.16" y="5.08" size="1.778" layer="96">&gt;VALUE</text>
+<rectangle x1="-0.254" y1="-2.54" x2="0.508" y2="2.54" layer="94"/>
+<pin name="B" x="-2.54" y="0" visible="off" length="short" direction="pas" swaplevel="1"/>
+<pin name="E" x="2.54" y="-5.08" visible="off" length="short" direction="pas" swaplevel="3" rot="R90"/>
+<pin name="C" x="2.54" y="5.08" visible="off" length="short" direction="pas" swaplevel="2" rot="R270"/>
+</symbol>
+</symbols>
+<devicesets>
+<deviceset name="BC817*" prefix="Q">
+<description>&lt;b&gt;NPN Transistor&lt;/b&gt;</description>
+<gates>
+<gate name="G$1" symbol="NPN" x="0" y="0"/>
+</gates>
+<devices>
+<device name="SMD" package="SOT23-BEC">
+<connects>
+<connect gate="G$1" pin="B" pad="B"/>
+<connect gate="G$1" pin="C" pad="C"/>
+<connect gate="G$1" pin="E" pad="E"/>
+</connects>
+<technologies>
+<technology name="-16"/>
+<technology name="-16LT1"/>
+<technology name="-25"/>
+<technology name="-25LT1"/>
+<technology name="-40"/>
+<technology name="-40LT1"/>
+</technologies>
+</device>
+</devices>
+</deviceset>
+</devicesets>
+</library>
 </libraries>
 <attributes>
 </attributes>
@@ -17062,6 +17128,8 @@ In this library the device names are the same as the pin names of the symbols, t
 <part name="SUPPLY10" library="supply2" deviceset="GND" device=""/>
 <part name="INPUT" library="SparkFun-Connectors" deviceset="M02" device="JST-PTH-2"/>
 <part name="P+3" library="supply1" deviceset="VCC" device=""/>
+<part name="Q1" library="transistor-npn" deviceset="BC817*" device="SMD" technology="-25LT1"/>
+<part name="R8" library="rcl" deviceset="R-EU_" device="R0805" value="1kΩ"/>
 </parts>
 <sheets>
 <sheet>
@@ -17070,6 +17138,8 @@ In this library the device names are the same as the pin names of the symbols, t
 indicator if possible</text>
 <text x="5.08" y="81.28" size="1.778" layer="91">Add some awesome
 logos to the board</text>
+<text x="-5.08" y="91.44" size="1.778" layer="91">Add an ON/OFF
+switch</text>
 </plain>
 <instances>
 <instance part="VADJ" gate="1" x="66.04" y="63.5"/>
@@ -17096,7 +17166,7 @@ logos to the board</text>
 <instance part="R6" gate="G$1" x="137.16" y="101.6" rot="R180"/>
 <instance part="ON" gate="G$1" x="134.62" y="50.8"/>
 <instance part="R7" gate="G$1" x="134.62" y="35.56" rot="R90"/>
-<instance part="GND4" gate="1" x="134.62" y="20.32"/>
+<instance part="GND4" gate="1" x="134.62" y="7.62"/>
 <instance part="I_PRB" gate="G$1" x="167.64" y="50.8"/>
 <instance part="GND6" gate="1" x="20.32" y="17.78"/>
 <instance part="P+1" gate="VCC" x="20.32" y="50.8"/>
@@ -17104,6 +17174,8 @@ logos to the board</text>
 <instance part="SUPPLY10" gate="GND" x="162.56" y="25.4"/>
 <instance part="INPUT" gate="G$1" x="7.62" y="33.02"/>
 <instance part="P+3" gate="VCC" x="134.62" y="63.5"/>
+<instance part="Q1" gate="G$1" x="132.08" y="20.32"/>
+<instance part="R8" gate="G$1" x="119.38" y="20.32"/>
 </instances>
 <busses>
 </busses>
@@ -17134,6 +17206,12 @@ logos to the board</text>
 <wire x1="165.1" y1="53.34" x2="157.48" y2="53.34" width="0.1524" layer="91"/>
 <wire x1="157.48" y1="53.34" x2="157.48" y2="66.04" width="0.1524" layer="91"/>
 <label x="154.94" y="66.04" size="1.778" layer="95"/>
+</segment>
+<segment>
+<pinref part="R8" gate="G$1" pin="1"/>
+<wire x1="114.3" y1="20.32" x2="109.22" y2="20.32" width="0.1524" layer="91"/>
+<wire x1="109.22" y1="20.32" x2="109.22" y2="30.48" width="0.1524" layer="91"/>
+<label x="111.76" y="33.02" size="1.778" layer="95" rot="R180"/>
 </segment>
 </net>
 <net name="N$3" class="0">
@@ -17207,11 +17285,6 @@ logos to the board</text>
 <pinref part="GND3" gate="1" pin="GND"/>
 </segment>
 <segment>
-<pinref part="R7" gate="G$1" pin="1"/>
-<wire x1="134.62" y1="30.48" x2="134.62" y2="22.86" width="0.1524" layer="91"/>
-<pinref part="GND4" gate="1" pin="GND"/>
-</segment>
-<segment>
 <wire x1="15.24" y1="33.02" x2="20.32" y2="33.02" width="0.1524" layer="91"/>
 <wire x1="20.32" y1="33.02" x2="20.32" y2="20.32" width="0.1524" layer="91"/>
 <pinref part="GND6" gate="1" pin="GND"/>
@@ -17222,6 +17295,11 @@ logos to the board</text>
 <wire x1="165.1" y1="38.1" x2="162.56" y2="38.1" width="0.1524" layer="91"/>
 <wire x1="162.56" y1="38.1" x2="162.56" y2="27.94" width="0.1524" layer="91"/>
 <pinref part="SUPPLY10" gate="GND" pin="GND"/>
+</segment>
+<segment>
+<pinref part="Q1" gate="G$1" pin="E"/>
+<pinref part="GND4" gate="1" pin="GND"/>
+<wire x1="134.62" y1="15.24" x2="134.62" y2="10.16" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="VADJ_IN" class="0">
@@ -17317,6 +17395,20 @@ logos to the board</text>
 <wire x1="157.48" y1="50.8" x2="157.48" y2="35.56" width="0.1524" layer="91"/>
 <pinref part="OUTPUT" gate="G$1" pin="2"/>
 <wire x1="157.48" y1="35.56" x2="165.1" y2="35.56" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$4" class="0">
+<segment>
+<pinref part="Q1" gate="G$1" pin="C"/>
+<pinref part="R7" gate="G$1" pin="1"/>
+<wire x1="134.62" y1="25.4" x2="134.62" y2="30.48" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$8" class="0">
+<segment>
+<pinref part="Q1" gate="G$1" pin="B"/>
+<wire x1="129.54" y1="20.32" x2="124.46" y2="20.32" width="0.1524" layer="91"/>
+<pinref part="R8" gate="G$1" pin="2"/>
 </segment>
 </net>
 </nets>
