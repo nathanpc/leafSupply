@@ -118,32 +118,22 @@
 <description>&lt;b&gt;Voltage Regulators&lt;/b&gt;&lt;p&gt;
 &lt;author&gt;Created by librarian@cadsoft.de&lt;/author&gt;</description>
 <packages>
-<package name="317TS">
+<package name="317L">
 <description>&lt;b&gt;VOLTAGE REGULATOR&lt;/b&gt;</description>
-<wire x1="5.08" y1="-1.143" x2="5.08" y2="-4.064" width="0.1524" layer="21"/>
-<wire x1="4.826" y1="-4.318" x2="5.08" y2="-4.064" width="0.1524" layer="21"/>
-<wire x1="4.826" y1="-4.318" x2="-4.826" y2="-4.318" width="0.1524" layer="21"/>
-<wire x1="-5.08" y1="-4.064" x2="-4.826" y2="-4.318" width="0.1524" layer="21"/>
-<wire x1="-5.08" y1="-4.064" x2="-5.08" y2="-1.143" width="0.1524" layer="21"/>
-<circle x="-4.6228" y="-3.7084" radius="0.254" width="0" layer="21"/>
-<pad name="1" x="-2.54" y="-2.54" drill="1.016" shape="long" rot="R90"/>
-<pad name="2" x="0" y="-2.54" drill="1.016" shape="long" rot="R90"/>
-<pad name="3" x="2.54" y="-2.54" drill="1.016" shape="long" rot="R90"/>
-<text x="-5.08" y="-6.0452" size="1.27" layer="25" ratio="10">&gt;NAME</text>
-<text x="-5.08" y="-7.62" size="1.27" layer="27" ratio="10">&gt;VALUE</text>
-<text x="-0.635" y="-3.81" size="1.27" layer="51" ratio="10">O</text>
-<text x="1.905" y="-3.81" size="1.27" layer="51" ratio="10">I</text>
-<text x="-3.175" y="-3.81" size="1.27" layer="51" ratio="10">A</text>
-<rectangle x1="-5.334" y1="-1.27" x2="-3.429" y2="0" layer="21"/>
-<rectangle x1="-3.429" y1="-0.762" x2="-1.651" y2="0" layer="21"/>
-<rectangle x1="-1.651" y1="-1.27" x2="-0.889" y2="0" layer="21"/>
-<rectangle x1="-0.889" y1="-0.762" x2="0.889" y2="0" layer="21"/>
-<rectangle x1="0.889" y1="-1.27" x2="1.651" y2="0" layer="21"/>
-<rectangle x1="1.651" y1="-0.762" x2="3.429" y2="0" layer="21"/>
-<rectangle x1="3.429" y1="-1.27" x2="5.334" y2="0" layer="21"/>
-<rectangle x1="-3.429" y1="-1.27" x2="-1.651" y2="-0.762" layer="51"/>
-<rectangle x1="-0.889" y1="-1.27" x2="0.889" y2="-0.762" layer="51"/>
-<rectangle x1="1.651" y1="-1.27" x2="3.429" y2="-0.762" layer="51"/>
+<wire x1="-2.0946" y1="-1.651" x2="-0.7863" y2="2.5485" width="0.1524" layer="21" curve="-111.098957"/>
+<wire x1="0.7868" y1="2.5484" x2="2.095" y2="-1.651" width="0.1524" layer="21" curve="-111.09954"/>
+<wire x1="-2.095" y1="-1.651" x2="2.095" y2="-1.651" width="0.1524" layer="21"/>
+<wire x1="-2.655" y1="-0.254" x2="-2.254" y2="-0.254" width="0.1524" layer="21"/>
+<wire x1="2.254" y1="-0.254" x2="2.655" y2="-0.254" width="0.1524" layer="21"/>
+<wire x1="-0.7863" y1="2.5485" x2="0.7863" y2="2.5485" width="0.1524" layer="51" curve="-34.293591"/>
+<pad name="1" x="-1.27" y="0" drill="0.8128" shape="octagon"/>
+<pad name="2" x="0" y="1.905" drill="0.8128" shape="octagon"/>
+<pad name="3" x="1.27" y="0" drill="0.8128" shape="octagon"/>
+<text x="-0.635" y="0.889" size="1.27" layer="51" ratio="10">O</text>
+<text x="0.635" y="-0.635" size="1.27" layer="51" ratio="10">I</text>
+<text x="3.175" y="0.635" size="1.27" layer="25" ratio="10">&gt;NAME</text>
+<text x="3.175" y="-1.27" size="1.27" layer="27" ratio="10">&gt;VALUE</text>
+<text x="-1.905" y="-0.635" size="1.27" layer="51" ratio="10">A</text>
 </package>
 </packages>
 <symbols>
@@ -163,17 +153,17 @@
 </symbol>
 </symbols>
 <devicesets>
-<deviceset name="LM317TS" prefix="IC" uservalue="yes">
+<deviceset name="LM317L" prefix="IC" uservalue="yes">
 <description>&lt;b&gt;VOLTAGE REGULATOR&lt;/b&gt;</description>
 <gates>
-<gate name="1" symbol="78ADJ" x="0" y="0"/>
+<gate name="A" symbol="78ADJ" x="0" y="0"/>
 </gates>
 <devices>
-<device name="" package="317TS">
+<device name="" package="317L">
 <connects>
-<connect gate="1" pin="ADJ" pad="1"/>
-<connect gate="1" pin="IN" pad="3"/>
-<connect gate="1" pin="OUT" pad="2"/>
+<connect gate="A" pin="ADJ" pad="1"/>
+<connect gate="A" pin="IN" pad="3"/>
+<connect gate="A" pin="OUT" pad="2"/>
 </connects>
 <technologies>
 <technology name=""/>
@@ -13994,7 +13984,6 @@ type RDH, grid 15 mm</description>
 </class>
 </classes>
 <parts>
-<part name="VADJ" library="v-reg" deviceset="LM317TS" device=""/>
 <part name="C2" library="rcl" deviceset="CPOL-EU" device="E2.5-6" value="10uF"/>
 <part name="GND1" library="supply1" deviceset="GND" device=""/>
 <part name="GND2" library="supply1" deviceset="GND" device=""/>
@@ -14006,20 +13995,17 @@ type RDH, grid 15 mm</description>
 <part name="+INPUT" library="SparkFun-Connectors" deviceset="M02" device="JST-PTH-2"/>
 <part name="P+3" library="supply1" deviceset="VCC" device=""/>
 <part name="-INPUT" library="SparkFun-Connectors" deviceset="M02" device="JST-PTH-2"/>
-<part name="R3" library="bourns" deviceset="3386-" device="W" value="5kΩ"/>
-<part name="VADJ1" library="v-reg" deviceset="LM317TS" device=""/>
 <part name="GND5" library="supply1" deviceset="GND" device=""/>
 <part name="GND7" library="supply1" deviceset="GND" device=""/>
 <part name="GND8" library="supply1" deviceset="GND" device=""/>
-<part name="R4" library="bourns" deviceset="3386-" device="W" value="5kΩ"/>
 <part name="P+1" library="supply1" deviceset="VCC" device=""/>
 <part name="SUPPLY1" library="supply2" deviceset="V-" device=""/>
 <part name="-I_PRB" library="pinhead" deviceset="PINHD-1X2" device=""/>
 <part name="SUPPLY3" library="supply2" deviceset="GND" device=""/>
 <part name="SUPPLY4" library="supply2" deviceset="V-" device=""/>
 <part name="GND10" library="supply1" deviceset="GND" device=""/>
-<part name="C7" library="rcl" deviceset="CPOL-EU" device="E2.5-6" value="1uF"/>
-<part name="C6" library="rcl" deviceset="CPOL-EU" device="E2.5-6" value="10uF"/>
+<part name="C6" library="rcl" deviceset="CPOL-EU" device="E2.5-6" value="1uF"/>
+<part name="C5" library="rcl" deviceset="CPOL-EU" device="E2.5-6" value="10uF"/>
 <part name="ON+" library="led" deviceset="LED" device="SQR2X5"/>
 <part name="S1" library="switch-dil" deviceset="DIP02YL" device=""/>
 <part name="P+4" library="supply1" deviceset="VCC" device=""/>
@@ -14034,12 +14020,16 @@ type RDH, grid 15 mm</description>
 <part name="C3" library="rcl" deviceset="CPOL-EU" device="E2.5-6" value="1uF"/>
 <part name="C4" library="rcl" deviceset="CPOL-EU" device="E2.5-6" value="2.2uF"/>
 <part name="D4" library="diode" deviceset="1N4148" device="DO35-7"/>
-<part name="D5" library="diode" deviceset="1N4148" device="DO35-7"/>
+<part name="D3" library="diode" deviceset="1N4148" device="DO35-7"/>
 <part name="R2" library="resistor" deviceset="R-EU_" device="0207/10" value="240Ω"/>
-<part name="+OUTPUT1" library="SparkFun-Connectors" deviceset="M02" device="JST-PTH-2"/>
-<part name="-OUTPUT1" library="SparkFun-Connectors" deviceset="M02" device="JST-PTH-2"/>
-<part name="JP1" library="pinhead" deviceset="PINHD-1X2" device=""/>
-<part name="JP2" library="pinhead" deviceset="PINHD-1X2" device=""/>
+<part name="+OUTPUT" library="SparkFun-Connectors" deviceset="M02" device="JST-PTH-2"/>
+<part name="-OUTPUT" library="SparkFun-Connectors" deviceset="M02" device="JST-PTH-2"/>
+<part name="VOUT-" library="pinhead" deviceset="PINHD-1X2" device=""/>
+<part name="VOUT+" library="pinhead" deviceset="PINHD-1X2" device=""/>
+<part name="R3" library="bourns" deviceset="3386-" device="U" value="5kΩ"/>
+<part name="R4" library="bourns" deviceset="3386-" device="U" value="5kΩ"/>
+<part name="VADJ+" library="v-reg" deviceset="LM317L" device=""/>
+<part name="VADJ-" library="v-reg" deviceset="LM317L" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -14048,7 +14038,6 @@ type RDH, grid 15 mm</description>
 <text x="129.54" y="43.18" size="2.54" layer="91">Negative</text>
 </plain>
 <instances>
-<instance part="VADJ" gate="1" x="124.46" y="114.3"/>
 <instance part="C2" gate="G$1" x="157.48" y="104.14"/>
 <instance part="GND1" gate="1" x="111.76" y="91.44"/>
 <instance part="GND2" gate="1" x="137.16" y="66.04"/>
@@ -14060,20 +14049,17 @@ type RDH, grid 15 mm</description>
 <instance part="+INPUT" gate="G$1" x="22.86" y="101.6"/>
 <instance part="P+3" gate="VCC" x="43.18" y="45.72"/>
 <instance part="-INPUT" gate="G$1" x="22.86" y="78.74"/>
-<instance part="R3" gate="G$1" x="124.46" y="86.36" rot="MR180"/>
-<instance part="VADJ1" gate="1" x="124.46" y="27.94"/>
 <instance part="GND5" gate="1" x="111.76" y="5.08"/>
 <instance part="GND7" gate="1" x="137.16" y="-20.32"/>
 <instance part="GND8" gate="1" x="157.48" y="5.08"/>
-<instance part="R4" gate="G$1" x="124.46" y="0" rot="MR180"/>
 <instance part="P+1" gate="VCC" x="101.6" y="129.54"/>
 <instance part="SUPPLY1" gate="1" x="101.6" y="12.7"/>
 <instance part="-I_PRB" gate="G$1" x="233.68" y="17.78"/>
 <instance part="SUPPLY3" gate="GND" x="228.6" y="-7.62"/>
 <instance part="SUPPLY4" gate="1" x="20.32" y="7.62"/>
 <instance part="GND10" gate="1" x="20.32" y="45.72" rot="R180"/>
-<instance part="C7" gate="G$1" x="147.32" y="-2.54" rot="R180"/>
-<instance part="C6" gate="G$1" x="157.48" y="15.24" rot="R180"/>
+<instance part="C6" gate="G$1" x="147.32" y="-2.54" rot="R180"/>
+<instance part="C5" gate="G$1" x="157.48" y="15.24" rot="R180"/>
 <instance part="ON+" gate="G$1" x="43.18" y="35.56"/>
 <instance part="S1" gate="1" x="53.34" y="93.98" rot="R270"/>
 <instance part="P+4" gate="VCC" x="66.04" y="119.38"/>
@@ -14094,21 +14080,24 @@ type RDH, grid 15 mm</description>
 <instance part="D4" gate="G$1" x="124.46" y="38.1" smashed="yes">
 <attribute name="NAME" x="127" y="38.5826" size="1.778" layer="95"/>
 </instance>
-<instance part="D5" gate="G$1" x="147.32" y="17.78" smashed="yes" rot="R270">
+<instance part="D3" gate="G$1" x="147.32" y="17.78" smashed="yes" rot="R270">
 <attribute name="NAME" x="147.8026" y="15.24" size="1.778" layer="95" rot="R270"/>
 </instance>
 <instance part="R2" gate="G$1" x="137.16" y="17.78" rot="R90"/>
-<instance part="+OUTPUT1" gate="G$1" x="259.08" y="91.44" rot="R180"/>
-<instance part="-OUTPUT1" gate="G$1" x="259.08" y="5.08" rot="R180"/>
-<instance part="JP1" gate="G$1" x="238.76" y="-10.16" rot="R270"/>
-<instance part="JP2" gate="G$1" x="238.76" y="78.74" rot="R270"/>
+<instance part="+OUTPUT" gate="G$1" x="259.08" y="91.44" rot="R180"/>
+<instance part="-OUTPUT" gate="G$1" x="259.08" y="5.08" rot="R180"/>
+<instance part="VOUT-" gate="G$1" x="238.76" y="-10.16" rot="R270"/>
+<instance part="VOUT+" gate="G$1" x="238.76" y="78.74" rot="R270"/>
+<instance part="R3" gate="G$1" x="124.46" y="86.36" rot="MR180"/>
+<instance part="R4" gate="G$1" x="124.46" y="0" rot="MR180"/>
+<instance part="VADJ+" gate="A" x="124.46" y="114.3"/>
+<instance part="VADJ-" gate="A" x="124.46" y="27.94"/>
 </instances>
 <busses>
 </busses>
 <nets>
 <net name="-VOUT" class="0">
 <segment>
-<pinref part="VADJ1" gate="1" pin="OUT"/>
 <wire x1="132.08" y1="27.94" x2="137.16" y2="27.94" width="0.1524" layer="91"/>
 <wire x1="137.16" y1="27.94" x2="147.32" y2="27.94" width="0.1524" layer="91"/>
 <wire x1="147.32" y1="27.94" x2="157.48" y2="27.94" width="0.1524" layer="91"/>
@@ -14122,10 +14111,11 @@ type RDH, grid 15 mm</description>
 <wire x1="147.32" y1="20.32" x2="147.32" y2="27.94" width="0.1524" layer="91"/>
 <junction x="147.32" y="27.94"/>
 <label x="165.1" y="30.48" size="1.778" layer="95" rot="R180"/>
-<pinref part="C6" gate="G$1" pin="-"/>
+<pinref part="C5" gate="G$1" pin="-"/>
 <pinref part="D4" gate="G$1" pin="C"/>
-<pinref part="D5" gate="G$1" pin="A"/>
+<pinref part="D3" gate="G$1" pin="A"/>
 <pinref part="R2" gate="G$1" pin="2"/>
+<pinref part="VADJ-" gate="A" pin="OUT"/>
 </segment>
 <segment>
 <pinref part="-I_PRB" gate="G$1" pin="1"/>
@@ -14141,16 +14131,16 @@ type RDH, grid 15 mm</description>
 <wire x1="147.32" y1="93.98" x2="137.16" y2="93.98" width="0.1524" layer="91"/>
 <wire x1="147.32" y1="88.9" x2="147.32" y2="93.98" width="0.1524" layer="91"/>
 <junction x="147.32" y="93.98"/>
-<pinref part="VADJ" gate="1" pin="ADJ"/>
 <wire x1="124.46" y1="93.98" x2="124.46" y2="106.68" width="0.1524" layer="91"/>
 <junction x="124.46" y="93.98"/>
 <wire x1="124.46" y1="91.44" x2="124.46" y2="93.98" width="0.1524" layer="91"/>
 <wire x1="137.16" y1="93.98" x2="124.46" y2="93.98" width="0.1524" layer="91"/>
 <junction x="137.16" y="93.98"/>
-<pinref part="R3" gate="G$1" pin="1"/>
 <pinref part="D1" gate="G$1" pin="A"/>
 <pinref part="R1" gate="G$1" pin="1"/>
 <pinref part="C3" gate="G$1" pin="+"/>
+<pinref part="R3" gate="G$1" pin="1"/>
+<pinref part="VADJ+" gate="A" pin="ADJ"/>
 </segment>
 </net>
 <net name="VCC" class="0">
@@ -14160,7 +14150,6 @@ type RDH, grid 15 mm</description>
 <pinref part="ON+" gate="G$1" pin="A"/>
 </segment>
 <segment>
-<pinref part="VADJ" gate="1" pin="IN"/>
 <wire x1="116.84" y1="114.3" x2="111.76" y2="114.3" width="0.1524" layer="91"/>
 <wire x1="111.76" y1="114.3" x2="101.6" y2="114.3" width="0.1524" layer="91"/>
 <wire x1="111.76" y1="106.68" x2="111.76" y2="114.3" width="0.1524" layer="91"/>
@@ -14172,6 +14161,7 @@ type RDH, grid 15 mm</description>
 <wire x1="101.6" y1="114.3" x2="101.6" y2="127" width="0.1524" layer="91"/>
 <pinref part="C1" gate="G$1" pin="+"/>
 <pinref part="D2" gate="G$1" pin="C"/>
+<pinref part="VADJ+" gate="A" pin="IN"/>
 </segment>
 <segment>
 <pinref part="S1" gate="1" pin="4"/>
@@ -14199,9 +14189,9 @@ type RDH, grid 15 mm</description>
 <wire x1="137.16" y1="73.66" x2="137.16" y2="68.58" width="0.1524" layer="91"/>
 <pinref part="GND2" gate="1" pin="GND"/>
 <junction x="137.16" y="73.66"/>
+<pinref part="C3" gate="G$1" pin="-"/>
 <pinref part="R3" gate="G$1" pin="3"/>
 <pinref part="R3" gate="G$1" pin="2"/>
-<pinref part="C3" gate="G$1" pin="-"/>
 </segment>
 <segment>
 <pinref part="C2" gate="G$1" pin="-"/>
@@ -14221,9 +14211,9 @@ type RDH, grid 15 mm</description>
 <segment>
 <wire x1="228.6" y1="91.44" x2="228.6" y2="81.28" width="0.1524" layer="91"/>
 <pinref part="SUPPLY10" gate="GND" pin="GND"/>
-<pinref part="+OUTPUT1" gate="G$1" pin="1"/>
+<pinref part="+OUTPUT" gate="G$1" pin="1"/>
 <wire x1="228.6" y1="91.44" x2="241.3" y2="91.44" width="0.1524" layer="91"/>
-<pinref part="JP2" gate="G$1" pin="1"/>
+<pinref part="VOUT+" gate="G$1" pin="1"/>
 <wire x1="241.3" y1="91.44" x2="251.46" y2="91.44" width="0.1524" layer="91"/>
 <wire x1="241.3" y1="81.28" x2="241.3" y2="91.44" width="0.1524" layer="91"/>
 <junction x="241.3" y="91.44"/>
@@ -14246,21 +14236,21 @@ type RDH, grid 15 mm</description>
 <wire x1="137.16" y1="-12.7" x2="137.16" y2="-17.78" width="0.1524" layer="91"/>
 <pinref part="GND7" gate="1" pin="GND"/>
 <junction x="137.16" y="-12.7"/>
+<pinref part="C6" gate="G$1" pin="+"/>
 <pinref part="R4" gate="G$1" pin="3"/>
 <pinref part="R4" gate="G$1" pin="2"/>
-<pinref part="C7" gate="G$1" pin="+"/>
 </segment>
 <segment>
 <wire x1="157.48" y1="12.7" x2="157.48" y2="7.62" width="0.1524" layer="91"/>
 <pinref part="GND8" gate="1" pin="GND"/>
-<pinref part="C6" gate="G$1" pin="+"/>
+<pinref part="C5" gate="G$1" pin="+"/>
 </segment>
 <segment>
 <wire x1="228.6" y1="5.08" x2="228.6" y2="-5.08" width="0.1524" layer="91"/>
 <pinref part="SUPPLY3" gate="GND" pin="GND"/>
-<pinref part="-OUTPUT1" gate="G$1" pin="1"/>
+<pinref part="-OUTPUT" gate="G$1" pin="1"/>
 <wire x1="228.6" y1="5.08" x2="241.3" y2="5.08" width="0.1524" layer="91"/>
-<pinref part="JP1" gate="G$1" pin="1"/>
+<pinref part="VOUT-" gate="G$1" pin="1"/>
 <wire x1="241.3" y1="5.08" x2="251.46" y2="5.08" width="0.1524" layer="91"/>
 <wire x1="241.3" y1="-7.62" x2="241.3" y2="5.08" width="0.1524" layer="91"/>
 <junction x="241.3" y="5.08"/>
@@ -14288,9 +14278,9 @@ type RDH, grid 15 mm</description>
 <pinref part="+I_PRB" gate="G$1" pin="2"/>
 <wire x1="231.14" y1="104.14" x2="223.52" y2="104.14" width="0.1524" layer="91"/>
 <wire x1="223.52" y1="104.14" x2="223.52" y2="88.9" width="0.1524" layer="91"/>
-<pinref part="+OUTPUT1" gate="G$1" pin="2"/>
+<pinref part="+OUTPUT" gate="G$1" pin="2"/>
 <wire x1="223.52" y1="88.9" x2="238.76" y2="88.9" width="0.1524" layer="91"/>
-<pinref part="JP2" gate="G$1" pin="2"/>
+<pinref part="VOUT+" gate="G$1" pin="2"/>
 <wire x1="238.76" y1="88.9" x2="251.46" y2="88.9" width="0.1524" layer="91"/>
 <wire x1="238.76" y1="81.28" x2="238.76" y2="88.9" width="0.1524" layer="91"/>
 <junction x="238.76" y="88.9"/>
@@ -14303,16 +14293,16 @@ type RDH, grid 15 mm</description>
 <wire x1="147.32" y1="7.62" x2="137.16" y2="7.62" width="0.1524" layer="91"/>
 <wire x1="147.32" y1="2.54" x2="147.32" y2="7.62" width="0.1524" layer="91"/>
 <junction x="147.32" y="7.62"/>
-<pinref part="VADJ1" gate="1" pin="ADJ"/>
 <wire x1="124.46" y1="7.62" x2="124.46" y2="20.32" width="0.1524" layer="91"/>
 <junction x="124.46" y="7.62"/>
 <wire x1="124.46" y1="5.08" x2="124.46" y2="7.62" width="0.1524" layer="91"/>
 <wire x1="137.16" y1="7.62" x2="124.46" y2="7.62" width="0.1524" layer="91"/>
 <junction x="137.16" y="7.62"/>
-<pinref part="R4" gate="G$1" pin="1"/>
-<pinref part="C7" gate="G$1" pin="-"/>
-<pinref part="D5" gate="G$1" pin="C"/>
+<pinref part="C6" gate="G$1" pin="-"/>
+<pinref part="D3" gate="G$1" pin="C"/>
 <pinref part="R2" gate="G$1" pin="1"/>
+<pinref part="R4" gate="G$1" pin="1"/>
+<pinref part="VADJ-" gate="A" pin="ADJ"/>
 </segment>
 </net>
 <net name="N$2" class="0">
@@ -14335,7 +14325,6 @@ type RDH, grid 15 mm</description>
 </net>
 <net name="V-" class="0">
 <segment>
-<pinref part="VADJ1" gate="1" pin="IN"/>
 <wire x1="116.84" y1="27.94" x2="111.76" y2="27.94" width="0.1524" layer="91"/>
 <wire x1="111.76" y1="27.94" x2="101.6" y2="27.94" width="0.1524" layer="91"/>
 <wire x1="111.76" y1="20.32" x2="111.76" y2="27.94" width="0.1524" layer="91"/>
@@ -14347,6 +14336,7 @@ type RDH, grid 15 mm</description>
 <wire x1="101.6" y1="27.94" x2="101.6" y2="15.24" width="0.1524" layer="91"/>
 <pinref part="C4" gate="G$1" pin="-"/>
 <pinref part="D4" gate="G$1" pin="A"/>
+<pinref part="VADJ-" gate="A" pin="IN"/>
 </segment>
 <segment>
 <wire x1="20.32" y1="10.16" x2="20.32" y2="15.24" width="0.1524" layer="91"/>
@@ -14362,7 +14352,6 @@ type RDH, grid 15 mm</description>
 </net>
 <net name="+VOUT" class="0">
 <segment>
-<pinref part="VADJ" gate="1" pin="OUT"/>
 <wire x1="132.08" y1="114.3" x2="137.16" y2="114.3" width="0.1524" layer="91"/>
 <pinref part="C2" gate="G$1" pin="+"/>
 <wire x1="137.16" y1="114.3" x2="147.32" y2="114.3" width="0.1524" layer="91"/>
@@ -14380,6 +14369,7 @@ type RDH, grid 15 mm</description>
 <pinref part="D2" gate="G$1" pin="A"/>
 <pinref part="D1" gate="G$1" pin="C"/>
 <pinref part="R1" gate="G$1" pin="2"/>
+<pinref part="VADJ+" gate="A" pin="OUT"/>
 </segment>
 <segment>
 <pinref part="+I_PRB" gate="G$1" pin="1"/>
@@ -14393,9 +14383,9 @@ type RDH, grid 15 mm</description>
 <pinref part="-I_PRB" gate="G$1" pin="2"/>
 <wire x1="231.14" y1="17.78" x2="223.52" y2="17.78" width="0.1524" layer="91"/>
 <wire x1="223.52" y1="17.78" x2="223.52" y2="2.54" width="0.1524" layer="91"/>
-<pinref part="-OUTPUT1" gate="G$1" pin="2"/>
+<pinref part="-OUTPUT" gate="G$1" pin="2"/>
 <wire x1="223.52" y1="2.54" x2="238.76" y2="2.54" width="0.1524" layer="91"/>
-<pinref part="JP1" gate="G$1" pin="2"/>
+<pinref part="VOUT-" gate="G$1" pin="2"/>
 <wire x1="238.76" y1="2.54" x2="251.46" y2="2.54" width="0.1524" layer="91"/>
 <wire x1="238.76" y1="-7.62" x2="238.76" y2="2.54" width="0.1524" layer="91"/>
 <junction x="238.76" y="2.54"/>
